@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{ifset $title}{$title} | {/ifset}TemplateDemo</title>
+</head>
+<body>
+{includeblock '_menu.latte'}
+<h1>Basic template{ifset $title} - {$title}{/ifset}</h1>
+<div>
+    {include content}
+</div>
+</body>
+</html>

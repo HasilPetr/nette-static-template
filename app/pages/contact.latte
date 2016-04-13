@@ -1,0 +1,5 @@
+{var $title = 'Contact', $menu = 'contact'}
+{block content}
+    <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+    {control contactForm}
+{/block}
