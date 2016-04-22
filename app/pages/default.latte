@@ -1,4 +1,11 @@
 {var $title = 'Home', $menu = 'home'}
 {block content}
-    HomePage
+    <h1>Nette Template Demo</h1>
+
+    <ul>
+        <li><a href="/templates/">Šablony</a> - vytvoření webu pouze s použitím latte souborů</li>
+        <li><a href="/contactform/">Kontakt</a> - jednoduchý kontaktní formulář s antispamovou kontrolou a odesláním na mail</li>
+        <li><a href="/macros/controlblock">Makro ControlBlock</a> - předělání makra <code>{l}control{r}</code> na blokové</li>
+        <li><a href="/macros/autocontrol">Makro AutoControl</a> - vykreslení komponenty bez nutnosti registrace</li>
+    </ul>
 {/block}

@@ -8,7 +8,7 @@ use Nette\Http\IRequest;
 use Nette\Http\Url;
 use Nette\Object;
 
-class CustomRouter extends Object implements IRouter
+class StaticRouter extends Object implements IRouter
 {
     const pagesDir = '/../pages';
     private $origUrl;
@@ -38,7 +38,7 @@ class CustomRouter extends Object implements IRouter
         $params['template'] = $template;
         $params['layout'] = $layout;
         return new Request(
-            'Page',
+            'Static',
             $httpRequest->getMethod(),
             $params,
             $httpRequest->getPost(),

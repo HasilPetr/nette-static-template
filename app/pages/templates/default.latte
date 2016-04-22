@@ -1,0 +1,9 @@
+{var $title = 'Šablony'}
+{block content}
+    <h1>Šablony</h1>
+
+    <p>Web je založený na adresářích a podadresářích, které obsahují latte šablony a případně layouty. Struktura adresářů pak odpovídá url adrese.</p>
+    <p>O vše se starají <code>StaticRouter</code> a <code>StaticPresenter</code>. Nejdříve zjistí, jestli existuje k url příslušná šablona. Pokud ne, dostanou se ke slovu další routy.<br>Např. pro adresu <var>http://example.com/portfolio/grafika/logo</var> se bude hledat šablona <var>/pages/portfolio/grafika/logo/default.latte</var> nebo <var>/pages/portfolio/grafika/logo.latte</var>.<br>Jako layout se bude hledat nejbližší <var>@layout.latte</var> směrem nahoru. Samozřejmě je možné v šabloně zvolit i jiný layout.</p>
+    <p>Z pochopitelných důvodů není možné třeba odkazovat pomocí maker <code>{l}link{r}</code>, <code>n:href</code> apod.</p>
+    <p>Mimochodem celé toto demo je děláno právě jenom pomocí šablon a jediného presenteru. Můžete si také všimnout koncového lomítka podle toho, jestli se jedná o soubor nebo adresář.</p>
+{/block}

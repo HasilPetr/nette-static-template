@@ -1,6 +1,6 @@
 <?php
 
-namespace Third;
+namespace App\Forms;
 
 use Nette\Application\UI\Form;
 use Nette\Mail\Message;
@@ -11,19 +11,15 @@ class ContactForm extends Form
 
     function __construct()
     {
-        $this->addText('email')
-            ->setValue('@')
-            ->setAttribute('style', 'display:none;');
-        $this->addText('antispam1')
+        $this->addText('email', 'Email')
+            ->setValue('@');
+        $this->addText('antispam1', 'Email')
             ->setType('email')
             ->setRequired()
-            ->addRule(Form::EMAIL)
-            ->setAttribute('placeholder', 'Email');
-        $this->addTextArea('text')
-            ->setAttribute('placeholder', 'Message');
-        $this->addSubmit('submit', 'Send')
-            ->setAttribute('style', 'display:none;');
-        $this->addSubmit('antispam2', 'Send');
+            ->addRule(Form::EMAIL);
+        $this->addTextArea('text', 'Zpráva');
+        $this->addSubmit('submit', 'Odeslat');
+        $this->addSubmit('antispam2', 'Odeslat');
         $this->addHidden('check')
             ->setValue(time());
         $this->onSuccess[] = array($this, 'processContactForm');
@@ -31,19 +27,19 @@ class ContactForm extends Form
 
     function processContactForm(Form $form, $values)
     {
-        if ($this->getPresenter()->getRequest()->getPost('antispam2') != 'Send' ||
-            $values['email'] != '@' ||
-            $values['check'] > time() - 5) {
-            $this->getPresenter()->flashMessage('Spam detected');
+        if ($this->getPresenter()->getRequest()->getPost('antispam2') != 'Odeslat' || // kontrola odesílacího tlačítka
+            $values['email'] != '@' || // kontrola nezměněné hodnoty
+            $values['check'] > time() - 5) { // kontrola minimální prodlevy
+            $this->getPresenter()->flashMessage('Spam', 'danger');
         } else {
-            $message = new Message();
-            $message->addTo('your@email.eml')
-                ->setFrom($values['antispam1'])
-                ->setSubject('Message')
-                ->setBody($values['text']);
-            $mailer = new SendmailMailer();
-            $mailer->send($message);
-            $this->getPresenter()->flashMessage('Message sent');
+//            $message = new Message();
+//            $message->addTo('your@email.eml')
+//                ->setFrom($values['antispam1'])
+//                ->setSubject('Message')
+//                ->setBody($values['text']);
+//            $mailer = new SendmailMailer();
+//            $mailer->send($message);
+            $this->getPresenter()->flashMessage('Zpráva odeslána');
         }
         $this->getPresenter()->redirect('this');
     }

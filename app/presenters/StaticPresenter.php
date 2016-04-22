@@ -2,10 +2,10 @@
 
 namespace App\Presenters;
 
+use App\Controls\Gallery;
 use Nette;
-use App\Model;
 
-class PagePresenter extends \Nette\Application\UI\Presenter
+class StaticPresenter extends \Nette\Application\UI\Presenter
 {
 
     function findLayoutTemplateFile()
@@ -21,7 +21,12 @@ class PagePresenter extends \Nette\Application\UI\Presenter
 
     public function createComponentContactForm()
     {
-        return new \Third\ContactForm();
+        return new \App\Forms\ContactForm();
+    }
+
+    public function createComponentGallery()
+    {
+        return new Gallery();
     }
 
 }

@@ -1,0 +1,19 @@
+{var $title = 'Makro controlblock', $menu = 'macros'}
+{block content}
+    <h1>Makro autocontrol {l}m{r}</h1>
+
+    <p>Jedná se o variantu makra <a href="/macros/controlblock"><code>{l}controlblock{r}</code></a>, kdy není potřeba komponentu registrovat.</p>
+    <p>Ukázka použití:</p>
+    <pre>{syntax double}{m notRegistredGallery "Galerie"}
+    http://lorempixel.com/image_output/nature-q-c-300-200-1.jpg
+    http://lorempixel.com/image_output/nature-q-c-300-200-2.jpg
+    http://lorempixel.com/image_output/nature-q-c-300-200-3.jpg
+{/m}{{/syntax}}</pre>
+    <p>Obsah bloku se předává jako první parametr při volání metody <code>render($images, $name)</code>.</p>
+    <p>Výsledkem může být třeba <a href="http://getbootstrap.com/javascript/#carousel">carousel</a>:</p>
+    {m notRegistredGallery "Galerie"}
+        http://lorempixel.com/image_output/nature-q-c-300-200-1.jpg
+        http://lorempixel.com/image_output/nature-q-c-300-200-2.jpg
+        http://lorempixel.com/image_output/nature-q-c-300-200-3.jpg
+    {/m}
+{/block}

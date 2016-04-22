@@ -1,3 +1,4 @@
+{var $menu = 'templates', $title = 'Šablony'}
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -15,9 +16,23 @@
     <![endif]-->
 </head>
 <body>
-{includeblock '_menu.latte'}
+{includeblock '../_menu.latte'}
     <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
         {include content}
+            </div>
+            <div class="col-sm-3">
+                <h2>Menu</h2>
+                <pre>
+<a href="/templates/">templates</a>
+| <a href="/templates/file">file</a>
++ <a href="/templates/subdir/">subdir</a>
+  | <a href="/templates/subdir/file">file</a>
+  + <a href="/templates/subdir/subsubdir/">subsubdir</a>
+                </pre>
+            </div>
+        </div>
     </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

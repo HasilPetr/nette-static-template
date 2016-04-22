@@ -1,0 +1,43 @@
+{var $title = 'Contact', $menu = 'contact'}
+{block content}
+    <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+
+    {form contactForm class=>'form-horizontal'}
+        <div n:foreach="$form->errors as $error" class="alert alert-warning">{$error}</div>
+        {input check}
+        <div class="form-group" style="display: none;">
+            {label email class=>'col-sm-1' /}
+            <div class="col-sm-3">
+                {input email class=>'form-control'}
+            </div>
+        </div>
+        <div class="form-group">
+            {label antispam1 class=>'col-sm-1' /}
+            <div class="col-sm-3">
+                {input antispam1 class=>'form-control'}
+            </div>
+        </div>
+        <div class="form-group">
+            {label text class=>'col-sm-1' /}
+            <div class="col-sm-3">
+                {input text class=>'form-control'}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-1">
+                {input antispam2 class=>'btn btn-default'}
+            </div>
+        </div>
+        <div class="form-group" style="display: none;">
+            <div class="col-sm-offset-1 col-sm-1">
+                {input submit class=>'btn btn-default'}
+            </div>
+        </div>
+    {/form}
+    <p>Formulář obsahuje několik antispamových ochran:</p>
+    <ul>
+        <li>Nesmí dojít k odeslání dříve než za 5 sekund po zobrazení stránky.</li>
+        <li>Skryté pole <code>email</code> obsahuje výchozí znak <var>@</var>, který se nesmí změnit.</li>
+        <li>Nesmí být odesláno skrytým tlačítkem <code>submit</code>.</li>
+    </ul>
+{/block}
